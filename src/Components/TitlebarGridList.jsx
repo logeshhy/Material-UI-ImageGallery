@@ -51,9 +51,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function TitlebarGridList() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState([]);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (...tile) => {
     setOpen(true);
+    console.log("clicked");
+    console.log(tile);
   };
 
   const handleClose = () => {
@@ -77,7 +80,8 @@ export default function TitlebarGridList() {
                 <IconButton
                   aria-label={`info about ${tile.title}`}
                   className={classes.icon}
-                  onClick={handleClickOpen}
+                  value={tile.id}
+                  onClick={() => handleClickOpen(tile)}
                 >
                   <InfoIcon />
                 </IconButton>
