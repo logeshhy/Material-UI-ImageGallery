@@ -1,14 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import IconButton from "@material-ui/core/IconButton";
-import InfoIcon from "@material-ui/icons/Info";
-import imagesList from "./imagesList";
-import DialogBox from "./DialogBox";
-
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -17,25 +8,12 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-
+import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
+
 const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    overflow: "hidden",
-    backgroundColor: theme.palette.background.paper
-  },
-  gridList: {
-    width: "auto",
-    height: "auto"
-  },
-  icon: {
-    color: "rgba(255, 255, 255, 0.54)"
-  },
   appBar: {
     position: "relative"
   },
@@ -49,7 +27,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function TitlebarGridList() {
+export default function DialogBox() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -62,31 +40,7 @@ export default function TitlebarGridList() {
   };
 
   return (
-    <div className={classes.root}>
-      <GridList cols={3}>
-        className={classes.gridList}
-        {/* <GridListTile key="Subheader" cols={2} style={{ height: "auto" }}>
-          <ListSubheader component="div">December</ListSubheader>
-        </GridListTile> */}
-        {imagesList.map(tile => (
-          <GridListTile key={tile.id}>
-            <img src={tile.src} alt={tile.title} />
-            <GridListTileBar
-              title={tile.title}
-              subtitle={<span>by: {tile.author}</span>}
-              actionIcon={
-                <IconButton
-                  aria-label={`info about ${tile.title}`}
-                  className={classes.icon}
-                  onClick={handleClickOpen}
-                >
-                  <InfoIcon />
-                </IconButton>
-              }
-            />
-          </GridListTile>
-        ))}
-      </GridList>
+    <div>
       <Dialog
         fullScreen
         open={open}
@@ -111,8 +65,7 @@ export default function TitlebarGridList() {
             </Button>
           </Toolbar>
         </AppBar>
-
-        {/* <List>
+        <List>
           <ListItem button>
             <ListItemText primary="Phone ringtone" secondary="Titania" />
           </ListItem>
@@ -123,7 +76,7 @@ export default function TitlebarGridList() {
               secondary="Tethys"
             />
           </ListItem>
-        </List> */}
+        </List>
       </Dialog>
     </div>
   );
