@@ -50,19 +50,18 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function TitlebarGridList() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [selectedTile, setSelectedTile] = React.useState(null);
   const [value, setValue] = React.useState([]);
 
-  const handleClickOpen = (...tile) => {
-    setOpen(true);
+  const handleClickOpen = tile => {
+    setSelectedTile(tile);
     console.log("clicked");
     console.log(tile);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setSelectedTile(null);
   };
-
   return (
     <div className={classes.root}>
       <GridList cols={3}>
@@ -92,7 +91,7 @@ export default function TitlebarGridList() {
       </GridList>
       <Dialog
         fullScreen
-        open={open}
+        open={selectedTile !== null}
         onClose={handleClose}
         TransitionComponent={Transition}
       >
@@ -115,6 +114,9 @@ export default function TitlebarGridList() {
           </Toolbar>
         </AppBar>
 
+        {selectedTile && (
+          <img src={selectedTile.src} alt={selectedTile.title} />
+        )}
         {/* <List>
           <ListItem button>
             <ListItemText primary="Phone ringtone" secondary="Titania" />
