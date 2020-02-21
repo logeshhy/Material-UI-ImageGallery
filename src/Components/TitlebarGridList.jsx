@@ -7,7 +7,6 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import IconButton from "@material-ui/core/IconButton";
 import InfoIcon from "@material-ui/icons/Info";
 import imagesList from "./imagesList";
-import DialogBox from "./DialogBox";
 
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
